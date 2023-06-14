@@ -1,3 +1,47 @@
-#h{
-    color: blue;
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+ }
+ 
+ html{
+    height:100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./img/pokemonBackground.jpg);
+    background-size: cover;
+
+}
+
+.mainWrapper{
+    width: 200px;
+    height: 200px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.results{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#pokeName {
+    font-size: 24px;
+    color: white;
+}
+
+#pokePicture{
+    height: 200px;
+    width: 200px;
+}
+
+#searchTitle{
+    text-align: center;
+    color: white;
 }

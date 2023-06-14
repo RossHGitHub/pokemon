@@ -1,0 +1,35 @@
+export {processData}
+
+async function getData(searchTerm){
+
+    let basic = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`)
+    let pokemonData = await basic.json()
+    console.log(pokemonData)
+
+    return {pokemonData};
+}
+
+
+    function storeData(pokemon){
+   let pokeImg = pokemon.pokemonData.sprites.front_default;
+    let pokeName = pokemon.pokemonData.name
+    let pokeCap = pokeName.charAt(0).toUpperCase() + pokeName.slice(1) + '!';
+
+
+
+    return {pokeImg, pokeCap};
+}
+
+
+
+
+async function processData(searchTerm){
+let data = await getData(searchTerm);
+let storedData = await storeData(data);
+await displayData(storedData)
+
+
+}function displayData(data){
+document.getElementById('pokePicture').src=data.pokeImg;
+document.getElementById('pokeName').innerHTML=data.pokeCap;
+}
