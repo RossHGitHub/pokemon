@@ -1,4 +1,5 @@
 export {processData}
+import { createCard } from "./cards"
 
 async function getData(searchTerm){
 
@@ -11,13 +12,15 @@ async function getData(searchTerm){
 
 
     function storeData(pokemon){
-   let pokeImg = pokemon.pokemonData.sprites.front_default;
+   let pokeImg = pokemon.pokemonData.sprites.other["official-artwork"].front_default;
     let pokeName = pokemon.pokemonData.name
-    let pokeCap = pokeName.charAt(0).toUpperCase() + pokeName.slice(1) + '!';
+    let pokeCap = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
+    let HP = pokemon.pokemonData.stats[0].base_stat + ' HP';
+    let type = pokemon.pokemonData.types[0].type.name;
 
 
 
-    return {pokeImg, pokeCap};
+    return {pokeImg, pokeCap, HP, type};
 }
 
 
@@ -26,10 +29,6 @@ async function getData(searchTerm){
 async function processData(searchTerm){
 let data = await getData(searchTerm);
 let storedData = await storeData(data);
-await displayData(storedData)
-
-
-}function displayData(data){
-document.getElementById('pokePicture').src=data.pokeImg;
-document.getElementById('pokeName').innerHTML=data.pokeCap;
+await createCard(storedData.pokeImg, storedData.pokeCap, storedData.HP, storedData.type);
 }
+
