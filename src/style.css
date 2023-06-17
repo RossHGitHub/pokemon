@@ -63,6 +63,7 @@ body{
     border-radius: 10px;
     border: 10px solid rgb(230, 230, 25);
     background-image: url(./img/cardBackYellow.png);
+    box-shadow: 5px 0 15px rgb(252, 225, 156);
     
 }
 

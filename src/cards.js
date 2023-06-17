@@ -26,6 +26,7 @@ function createCard(picture, name, HP, type, moveOne, moveTwo){
     nameAndHP.appendChild(hp);
 
     mainWrapper.appendChild(nameAndHP);
+    
 
 
 //create Picture Holder

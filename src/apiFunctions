@@ -1,4 +1,4 @@
-export {processData}
+export {processData, randomPokemon}
 import { createCard } from "./cards"
 
 async function getData(searchTerm){
@@ -32,3 +32,15 @@ let storedData = await storeData(data);
 await createCard(storedData.pokeImg, storedData.pokeCap, storedData.HP, storedData.type);
 }
 
+
+
+
+async function randomPokemon(){
+    let allPokemonResponse = await fetch('https://pokeapi.co/api/v2/pokemon');
+    let allPokemonData = await allPokemonResponse.json();
+    const totalPokemons = allPokemonData.count;
+
+    const randomID = Math.floor(Math.random()*totalPokemons) + 1;
+
+    processData(randomID)
+}
