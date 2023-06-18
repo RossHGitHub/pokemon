@@ -53,6 +53,7 @@ body{
     color: white;
 }
 
+
 .card{
     height: 400px;
     width:250px;
@@ -64,8 +65,12 @@ body{
     border: 10px solid rgb(230, 230, 25);
     background-image: url(./img/cardBackYellow.png);
     box-shadow: 5px 0 15px rgb(252, 225, 156);
-    
+    transition: transform 2s;
+
 }
+
+
+
 
 .cardPic{
     height: 40px;
@@ -114,4 +119,11 @@ body{
 
 .pp{
     align-self: flex-end;
+}
+
+.err{
+    height: 16px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
 }

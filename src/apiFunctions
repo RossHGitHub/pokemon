@@ -2,14 +2,18 @@ export {processData, randomPokemon}
 import { createCard } from "./cards"
 
 async function getData(searchTerm){
-
+try{
     let basic = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`)
     let pokemonData = await basic.json()
    // console.log(pokemonData)
 
-    return {pokemonData};
+     return {pokemonData};
 }
+catch {
 
+showErr()
+}
+}
 
     function storeData(pokemon){
    let pokeImg = pokemon.pokemonData.sprites.other["official-artwork"].front_default;
@@ -24,7 +28,7 @@ async function getData(searchTerm){
 }
 
 async function randomMove(pokemon){
-
+try{
       const moves = pokemon.pokemonData.moves;
   
       const randomIndex = Math.floor(Math.random() * moves.length);
@@ -41,23 +45,33 @@ async function randomMove(pokemon){
     let moveDescription = firstDescription.flavor_text
   
     return{randomMoveName, moveDescription, pp}
-      };
+      }
     
+    catch {
+        showErr()
+    };
+}
   
 
 
 async function processData(searchTerm){
+    try{
 let data = await getData(searchTerm);
 let storedData = await storeData(data);
 let randomMov = await randomMove(data);
 let randomMovTwo = await randomMove(data);
 await createCard(storedData.pokeImg, storedData.pokeCap, storedData.HP, storedData.type, randomMov.randomMoveName, randomMov.moveDescription, randomMov.pp, randomMovTwo.randomMoveName, randomMovTwo.moveDescription, randomMovTwo.pp);
+    }
+    catch {
+        showErr()
+    }
 }
 
 
 
 
 async function randomPokemon(){
+    try{
     let allPokemonResponse = await fetch('https://pokeapi.co/api/v2/pokemon');
     let allPokemonData = await allPokemonResponse.json();
     const totalPokemons = allPokemonData.count;
@@ -65,4 +79,14 @@ async function randomPokemon(){
     const randomID = Math.floor(Math.random()*totalPokemons) + 1;
 
     processData(randomID)
+    }
+    catch{
+        showErr()
+    }
+}
+
+function showErr(){
+    const err = document.getElementById('err');
+    err.innerHTML='Error! Please try again.'
+    err.classList='err';
 }
