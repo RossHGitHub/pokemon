@@ -5,7 +5,7 @@ async function getData(searchTerm){
 
     let basic = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`)
     let pokemonData = await basic.json()
-    console.log(pokemonData)
+   // console.log(pokemonData)
 
     return {pokemonData};
 }
@@ -23,13 +23,35 @@ async function getData(searchTerm){
     return {pokeImg, pokeCap, HP, type};
 }
 
+async function randomMove(pokemon){
 
+      const moves = pokemon.pokemonData.moves;
+  
+      const randomIndex = Math.floor(Math.random() * moves.length);
+      const randomMove = moves[randomIndex];
+      const randomMoveName = randomMove.move.name.toUpperCase();
+  
+      const moveResponse = await fetch(randomMove.move.url);
+      const moveData = await moveResponse.json();
+
+      const pp = moveData.pp;
+  
+      const moveDescriptions = moveData.flavor_text_entries;
+    const firstDescription = moveDescriptions[1];
+    let moveDescription = firstDescription.flavor_text
+  
+    return{randomMoveName, moveDescription, pp}
+      };
+    
+  
 
 
 async function processData(searchTerm){
 let data = await getData(searchTerm);
 let storedData = await storeData(data);
-await createCard(storedData.pokeImg, storedData.pokeCap, storedData.HP, storedData.type);
+let randomMov = await randomMove(data);
+let randomMovTwo = await randomMove(data);
+await createCard(storedData.pokeImg, storedData.pokeCap, storedData.HP, storedData.type, randomMov.randomMoveName, randomMov.moveDescription, randomMov.pp, randomMovTwo.randomMoveName, randomMovTwo.moveDescription, randomMovTwo.pp);
 }
 
 
