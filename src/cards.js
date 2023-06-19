@@ -1,12 +1,14 @@
-export{createCard, clearCard}
+export{createCard}
 
 let main = document.getElementById('results');
-let mainWrapper = document.createElement('div');
 
 function createCard(picture, name, HP, type, moveOneName, moveDescript, pp, randNameTwo, randDescTwo, ppTwo){
 //create Card
+
+let mainWrapper = document.createElement('div');
     mainWrapper.classList='card';
-    checkBackground(type)
+    checkBackground(mainWrapper, type)
+
 
 //create name and HP div
 
@@ -76,31 +78,49 @@ function createCard(picture, name, HP, type, moveOneName, moveDescript, pp, rand
     moveTwoPP.innerHTML=ppTwo;
     moveTwoWrapper.appendChild(moveTwoPP);
 
+    
+
+
 
 mainWrapper.appendChild(moveTwoWrapper);
 
 
 
-    main.appendChild(mainWrapper);
+  main.insertBefore(mainWrapper, main.firstChild);
+showCard(mainWrapper);
 
 
 }
 
-function clearCard(){
-    main.innerHTML='';
-    mainWrapper.innerHTML = '';
-}
 
-function checkBackground(type){
+function checkBackground(main, type){
     if (type==='electric'){
-        mainWrapper.style.backgroundImage='url(../src/img/cardBackYellow.png)';
+        main.style.backgroundImage='url(../src/img/cardBackYellow.png)';
     } else if (type === 'fire'){
-        mainWrapper.style.backgroundImage='url(../src/img/cardBackRed.png)';
+        main.style.backgroundImage='url(../src/img/cardBackRed.png)';
     } else if (type === 'grass'){
-        mainWrapper.style.backgroundImage='url(../src/img/cardBackGreen.png)';
+        main.style.backgroundImage='url(../src/img/cardBackGreen.png)';
     } else if (type === 'water'){
-        mainWrapper.style.backgroundImage='url(../src/img/cardBackBlue.png)';
+        main.style.backgroundImage='url(../src/img/cardBackBlue.png)';
     } else {
-            mainWrapper.style.backgroundImage='url(../src/img/cardBackOrange.png)';
+            main.style.backgroundImage='url(../src/img/cardBackOrange.png)';
     }
 }
+
+function showCard(card) {
+   
+    card.style.left = '140px'
+    card.style.opacity = '0'
+     card.style.transform = 'translate(-120px) rotateY(90deg)';
+     card.style.zIndex = '';
+    card.style.transition = 'transform 2s, opacity 2s';
+
+    setTimeout(function() {
+        card.style.top = '';
+        card.style.right = '';
+        card.style.transform = '';
+        card.style.zIndex = '';
+        card.style.opacity='1'
+        card.style.boxShadow = '';
+    }, 10);
+ };

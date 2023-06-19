@@ -17,9 +17,12 @@
 }
 
 body{
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .mainWrapper{
@@ -28,15 +31,26 @@ body{
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
+    padding: 4px;
+}
+
+.searchItem{
+    margin: 4px;
 }
 
 .results{
     display: flex;
-    flex-direction: column;
+    padding: 20px;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    overflow: scroll;
+    width: 100vw;
+    transition: transform 2s ease;
 }
+
+
 
 #pokeName {
     font-size: 24px;
@@ -58,9 +72,10 @@ body{
     height: 400px;
     width:250px;
     background-color: white;
+    margin: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     border-radius: 10px;
     border: 10px solid rgb(230, 230, 25);
     background-image: url(./img/cardBackYellow.png);
@@ -68,6 +83,8 @@ body{
     transition: transform 2s;
 
 }
+
+
 
 .card:hover{
     filter: brightness(1.10);
@@ -95,7 +112,7 @@ body{
 
     font-size: 18px;
     color: rgb(218, 55, 55);
-    text-shadow: 0  0  2px black;
+    text-shadow: 0 0 2px black;
 }
 
 .topStats{
@@ -132,3 +149,4 @@ body{
     color: white;
     font-size: 12px;
 }
+

@@ -12,7 +12,6 @@ const err = document.getElementById('err')
 searchButton.addEventListener('click', ()=>{
     err.removeAttribute('class', 'err')
     err.innerHTML=''
-    clearCard();
     processData(searchInput.value);
     searchInput.value=''
    
@@ -22,7 +21,6 @@ searchButton.addEventListener('click', ()=>{
     randomPokemonButton.addEventListener('click', ()=>{
         err.removeAttribute('class', 'err')
         err.innerHTML='';
-        clearCard()
         randomPokemon()
         searchInput.value=''
-    })
+    });
