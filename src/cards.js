@@ -1,7 +1,7 @@
 export{createCard}
 
 let main = document.getElementById('results');
-
+let resultsArray = [];
 function createCard(picture, name, HP, type, moveOneName, moveDescript, pp, randNameTwo, randDescTwo, ppTwo){
 //create Card
 
@@ -10,7 +10,15 @@ let mainWrapper = document.createElement('div');
     checkBackground(mainWrapper, type)
 
 
-//create name and HP div
+//create close button, name and HP div
+
+    let removeCard = document.createElement('div')
+    removeCard.classList='removeCard';
+    removeCard.innerHTML='X'
+    removeCard.addEventListener('click', ()=>{
+    resultsArray.pop(element);
+    });
+    mainWrapper.appendChild(removeCard);
 
     let nameAndHP = document.createElement('div')
     nameAndHP.classList='topStats';
@@ -80,13 +88,14 @@ let mainWrapper = document.createElement('div');
 
     
 
-
-
 mainWrapper.appendChild(moveTwoWrapper);
 
 
+resultsArray.unshift(mainWrapper);
+resultsArray.forEach((element) => {
+    main.appendChild(element);
+});
 
-  main.insertBefore(mainWrapper, main.firstChild);
 showCard(mainWrapper);
 
 
