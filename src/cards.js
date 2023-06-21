@@ -16,7 +16,12 @@ let mainWrapper = document.createElement('div');
     removeCard.classList='removeCard';
     removeCard.innerHTML='X'
     removeCard.addEventListener('click', ()=>{
-    resultsArray.pop(element);
+            const index = resultsArray.indexOf(mainWrapper);
+            if (index > -1) {
+              resultsArray.splice(index, 1);
+              mainWrapper.innerHTML = '';
+              mainWrapper.style.display='none';
+            }
     });
     mainWrapper.appendChild(removeCard);
 

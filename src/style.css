@@ -58,7 +58,11 @@ body{
     color: white;
     border-radius: 30%;
     text-align: center;
-    right: 150px;
+    top: 10px;
+    right: 115px;
+    display: none;
+    position: absolute;
+    
 
 }
 
@@ -91,17 +95,23 @@ body{
     background-image: url(./img/cardBackYellow.png);
     box-shadow: 5px 0 15px rgb(252, 225, 156);
     transition: transform 2s;
-
+    
 }
+
+
 
 
 
 .card:hover{
     filter: brightness(1.10);
-    box-shadow: 10px 0 20px rgb(252, 225, 156);;
+    box-shadow: 10px 0 20px rgb(252, 225, 156);
 }
 
+.card:hover .removeCard {
+display: block;
+cursor: pointer;
 
+}
 
 
 .cardPic{
