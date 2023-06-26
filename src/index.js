@@ -37,9 +37,13 @@ searchButton.addEventListener('click', ()=>{
     noOfCards.addEventListener('click', ()=>{
         alert("This is a buggy feature, it won't generate exactly the number you requested (But I am working on it).")
        const num = prompt('How many Pokemon cards would you like?', 'Max 100');
+
+       if(num>100){
+        alert('Max 100!')
+       } else {
        for (let i = 0; i < num; i++) {
         randomPokemon();
-    }})
+    }}});
 
 create.addEventListener('click', ()=>{
     createOwn();
