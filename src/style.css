@@ -27,15 +27,19 @@ body{
 
 
 .mainWrapper{
-    width: 200px;
+    width: 600px;
     height: 200px;
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     padding: 4px;
+    
+    
 }
 
 .searchItem{
+    width: 200px;
     margin: 4px;
     border-radius: 5px;
    
@@ -98,6 +102,7 @@ body{
     background-image: url(./img/cardBackYellow.png);
     box-shadow: 5px 0 15px rgb(252, 225, 156);
     transition: transform 2s;
+    overflow: hidden;
     
 }
 
@@ -129,6 +134,7 @@ cursor: pointer;
 
 .cardName{
     font-size: 18px;
+    overflow: hidden;
 }
 
 .hp{
@@ -136,6 +142,7 @@ cursor: pointer;
     font-size: 18px;
     color: rgb(218, 55, 55);
     text-shadow: 0 0 2px black;
+    overflow: hidden;
 }
 
 .topStats{
@@ -143,6 +150,7 @@ cursor: pointer;
     justify-content: space-between;
     margin: 10px;
     font-weight: 800;
+    overflow: hidden;
 }
 
 .move{
@@ -150,20 +158,24 @@ cursor: pointer;
     display: flex;
     border-top: 1px solid black;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .moveName{
     font-size: 16px;
     font-weight: 900;
     flex-basis: 1;
+    overflow: hidden;
 }
 
 .moveDesc{
     font-size: 12px;
+    overflow: hidden;
 }
 
 .pp{
     align-self: flex-end;
+    overflow: hidden;
 }
 
 .err{
@@ -171,6 +183,7 @@ cursor: pointer;
     background-color: red;
     color: white;
     font-size: 12px;
+    overflow: hidden;
 }
 
 .createMain{

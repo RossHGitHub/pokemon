@@ -2,6 +2,9 @@ export{createCard}
 
 let main = document.getElementById('results');
 let resultsArray = [];
+
+
+
 function createCard(picture, name, HP, type, moveOneName, moveDescript, pp, randNameTwo, randDescTwo, ppTwo){
 //create Card
 
@@ -19,8 +22,7 @@ let mainWrapper = document.createElement('div');
             const index = resultsArray.indexOf(mainWrapper);
             if (index > -1) {
               resultsArray.splice(index, 1);
-              mainWrapper.innerHTML = '';
-              mainWrapper.style.display='none';
+              main.removeChild(mainWrapper)
             }
     });
     mainWrapper.appendChild(removeCard);
