@@ -1,11 +1,12 @@
 export {game};
+import { createCard } from "./cards";
 
 const game = () => {
 
     let score = 0;
     let results = document.getElementById('results');
     let main = document.getElementById('mainWrapper');
-    let body = document.querySelector('html');
+    let body = document.querySelector('body');
     
 
     let questionArray = [
@@ -50,36 +51,52 @@ const game = () => {
       
     const init = () => {
         main.innerHTML='';
-
+        results.innerHTML='';
+        let gameDesc = document.createElement('div');
+        gameDesc.classList='gameDesc';
+        gameDesc.innerHTML='Do you have what it takes to beat Team Rocket!? You have 5 chances to answer questions to get Pokémon cards, and get enough Pokémon strength to beat them!'
         let startButton = document.createElement('button')
-        startButton.classList='gameButton';
-        let questionDiv = document.createElement('div')
-        questionDiv.classList='question';
-        let answerDiv = document.createElement('div')
-        answerDiv.classList='answer';
-        
+        startButton.classList='searchItem';
+        startButton.innerHTML='Begin'
+
+
+        main.appendChild(gameDesc)
         main.appendChild(startButton);
-        main.appendChild(questionDiv);
-        main.appendChild(answerDiv);
         score = 0;
+
+        startButton.addEventListener('click', ()=>{
+            body.removeChild(main);
+            results.innerHTML='';
+            playRound();
+        })
 
     }
     const playRound = ()=>{
+        //Game math
+        let randomNum = Math.floor(Math.random()*questionArray.length);
+        let randomRandom = questionArray[randomNum];
+        let randomQuest = randomRandom.question;
+        let randomQuestionAns = randomRandom.ans;
 
-            let randomNum = Math.floor(Math.random()*questionArray.length);
-            let randomRandom = questionArray[randomNum];
-            let randomQuest = randomRandom.question;
-            let randomQuestionAns = randomRandom.ans;
-         
-            let answer = prompt(randomRandom.question)
-            if (answer==randomRandom.ans){
-         
-         
-         
-         
+        //create playspace
+        let mainWrap = document.createElement('div');
+        mainWrap.classList='mainWrap';
+        body.appendChild(mainWrap);
+
+        let questionDiv = document.createElement('div')
+        questionDiv.classList='question';
+        questionDiv.innerHTML = randomQuest;
+        mainWrap.appendChild(questionDiv);
+
+
+        let answerDiv = document.createElement('input')
+        answerDiv.classList='answer';
+        mainWrap.appendChild(answerDiv)
+        
+ 
          console.log(questionArray);
     }
-}
+
 
 return {score, init, playRound}
 }

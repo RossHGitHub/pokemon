@@ -1,4 +1,5 @@
 import { createCard } from "./cards";
+import { randomPokemon } from "./apiFunctions";
 export {createOwn}
 
 function createOwn(){

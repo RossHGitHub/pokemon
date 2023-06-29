@@ -27,7 +27,7 @@ body{
 
 
 .mainWrapper{
-    width: 600px;
+    max-width: 600px;
     height: 200px;
     display:flex;
     flex-direction: column;
@@ -44,6 +44,13 @@ body{
     border-radius: 5px;
    
 }
+
+.searchItem:hover{
+    background-color: rgb(165, 178, 178);
+    color: white;
+}
+
+
 
 .results{
     display: flex;
@@ -228,4 +235,15 @@ cursor: pointer;
     cursor: pointer;
     transition: transform 1s;
 
+}
+
+
+.gameDesc{
+    color: white;
+    text-align: center;
+    text-shadow: 1px 1px black;
+}
+
+.question{
+    color: white;
 }
