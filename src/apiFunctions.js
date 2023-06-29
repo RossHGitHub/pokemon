@@ -87,7 +87,7 @@ async function randomPokemon(){
     processData(randomID)
     }
     catch{
-        showErr()
+        showErr();
     }
 }
 

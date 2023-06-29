@@ -247,3 +247,21 @@ cursor: pointer;
 .question{
     color: white;
 }
+
+.mainGameWrap{
+min-width: 300px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.counter{
+    color: white;
+    font-size: 18;
+    margin-left: 50px;
+}
+
+.turnCount{
+    color: white;
+}
