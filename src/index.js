@@ -2,6 +2,7 @@ import './style.css';
 import { processData, randomPokemon } from './apiFunctions';
 import { createCard } from './cards';
 import { createOwn } from './createOwn';
+import { game } from './game';
 
 
 const searchButton = document.getElementById('searchButton');
@@ -10,6 +11,7 @@ const randomPokemonButton = document.getElementById('randomButton');
 const err = document.getElementById('err');
 const noOfCards = document.getElementById('noOfPokemon');
 const create = document.getElementById('createOwn');
+let gameButton = document.getElementById('playGame');
 
 searchButton.addEventListener('click', ()=>{
     if (searchInput.value === 'mr. meeseeks'){
@@ -47,5 +49,11 @@ searchButton.addEventListener('click', ()=>{
 
 create.addEventListener('click', ()=>{
     createOwn();
+})
+
+gameButton.addEventListener('click', ()=>{
+const playGame = game();
+
+playGame.init();
 })
 
